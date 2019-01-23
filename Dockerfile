@@ -1,7 +1,5 @@
-FROM norionomura/swiftlint:latest
+FROM swift:4.2
 LABEL maintainer "Michael Berg <michael.berg.dd@googlemail.com>"
-
-RUN swiftlint version
 
 # Install danger.js
 RUN apt-get update
@@ -13,8 +11,17 @@ RUN danger --version
 # Install danger-swift
 RUN git clone https://github.com/danger/danger-swift.git && \
 cd danger-swift && \
-make install
+make install && \
+cd ..
 RUN danger-swift --help
+
+# Install swiftlint
+RUN git clone https://github.com/realm/SwiftLint.git && \
+cd SwiftLint && \
+git submodule update --init --recursive && \
+make install && \
+cd ..
+RUN swiftlint version
 
  # Run danger
 CMD ["danger-swift", "ci"]
