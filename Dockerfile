@@ -7,7 +7,7 @@ RUN swiftlint version
 RUN apt-get update
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
 RUN apt-get install -y nodejs
-RUN npm install -g danger
+RUN npm install -g danger@6.1.13
 RUN danger --version
 
 # Install danger-swift
