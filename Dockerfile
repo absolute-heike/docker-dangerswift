@@ -1,4 +1,4 @@
-FROM swift:4.2
+FROM swift:4.2.1
 LABEL maintainer "Michael Berg <michael.berg.dd@googlemail.com>"
 
 # Install danger.js
