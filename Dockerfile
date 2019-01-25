@@ -16,7 +16,7 @@ cd ..
 RUN danger-swift --help
 
 # Setup SHELL env variable
-RUN export SHELL=/bin/bash
+ENV SHELL=/bin/bash
 
  # Run danger
 CMD ["danger-swift", "ci"]
