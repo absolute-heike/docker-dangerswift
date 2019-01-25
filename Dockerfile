@@ -9,8 +9,9 @@ RUN npm install -g danger@6.1.13
 RUN danger --version
 
 # Install danger-swift
-RUN git clone -b '1.1.0' https://github.com/danger/danger-swift.git && \
+RUN git clone https://github.com/danger/danger-swift.git && \
 cd danger-swift && \
+git checkout 470d8ed906f4c5d7e5cc7bb5112b2f1e88cdffc8 && \
 make install && \
 cd ..
 RUN danger-swift --help
