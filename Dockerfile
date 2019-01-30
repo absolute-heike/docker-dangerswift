@@ -1,4 +1,4 @@
-FROM norionomura/swiftlint:latest
+FROM norionomura/swiftlint:0.30.1
 LABEL maintainer "Michael Berg <michael.berg.dd@googlemail.com>"
 
 # Install danger.js
@@ -11,7 +11,7 @@ RUN danger --version
 # Install danger-swift
 RUN git clone https://github.com/danger/danger-swift.git && \
 cd danger-swift && \
-git checkout 470d8ed906f4c5d7e5cc7bb5112b2f1e88cdffc8 && \
+git checkout e6eaa61758721751673df944c8328a5ebab471ad && \
 make install && \
 cd ..
 RUN danger-swift --help
