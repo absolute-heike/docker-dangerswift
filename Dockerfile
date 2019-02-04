@@ -11,7 +11,7 @@ RUN danger --version
 # Install danger-swift
 RUN git clone https://github.com/danger/danger-swift.git && \
 cd danger-swift && \
-git checkout e6eaa61758721751673df944c8328a5ebab471ad && \
+git checkout 3b5a5687ce610fab5bd954ae507795c54edc6b8b && \
 make install && \
 cd ..
 RUN danger-swift --help
