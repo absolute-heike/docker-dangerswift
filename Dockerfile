@@ -1,19 +1,18 @@
-FROM norionomura/swiftlint:0.30.1
+FROM norionomura/swiftlint:0.32.0_swift-4.2
 LABEL maintainer "Michael Berg <michael.berg.dd@googlemail.com>"
 
 # Install danger.js
-RUN apt-get update
-RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
-RUN apt-get install -y nodejs
-RUN npm install -g danger@6.1.13
-RUN danger --version
+RUN apt-get update && \
+    curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
+    apt-get install -y nodejs && \
+    apt-get clean && \
+    npm install -g danger@7.1.3 && \
+    danger --version
 
 # Install danger-swift
-RUN git clone https://github.com/danger/danger-swift.git && \
-cd danger-swift && \
-git checkout 3b5a5687ce610fab5bd954ae507795c54edc6b8b && \
-make install && \
-cd ..
+RUN git clone --branch 1.5.4 --depth 1 https://github.com/danger/danger-swift.git && \
+    make -C danger-swift install && \
+    rm -r danger-swift
 RUN danger-swift --help
 
 # Setup SHELL env variable
