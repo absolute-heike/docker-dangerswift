@@ -11,9 +11,7 @@ RUN apt-get update && \
 
 # Install danger-swift
 RUN git clone --branch 1.5.4 --depth 1 https://github.com/danger/danger-swift.git && \
-    cd danger-swift && \
-    make install && \
-    cd .. && \
+    make -C danger-swift install && \
     rm -r danger-swift
 RUN danger-swift --help
 
