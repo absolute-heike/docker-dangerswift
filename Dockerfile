@@ -1,4 +1,4 @@
-FROM norionomura/swiftlint:0.32.0_swift-4.2
+FROM norionomura/swiftlint:0.38.2_swift-5.1.3
 LABEL maintainer "Michael Berg <michael.berg.dd@googlemail.com>"
 
 # Install danger.js
@@ -6,11 +6,11 @@ RUN apt-get update && \
   curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
   apt-get install -y nodejs && \
   apt-get clean && \
-  npm install -g danger@7.1.3 && \
+  npm install -g danger@9.2.10 && \
   danger --version
 
 # Install danger-swift
-RUN git clone --branch 1.5.4 --depth 1 https://github.com/danger/danger-swift.git && \
+RUN git clone --branch 3.0.0 --depth 1 https://github.com/danger/danger-swift.git && \
   make -C danger-swift install && \
   rm -r danger-swift
 RUN danger-swift --help
